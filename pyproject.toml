@@ -1,0 +1,20 @@
+[project]
+name = "haunted-hallway"
+version = "0.1.0"
+description = "Simplified, self-hostable version of a Halloween-night projection system: kids' drawings become short ghost clips in a hallway."
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = ["flask>=3.0", "pillow>=10.0"]
+
+[project.optional-dependencies]
+gemini = ["google-genai>=3.0"]
+dev = ["pytest>=8.0", "playwright>=1.40", "google-genai>=3.0"]
+
+[tool.setuptools]
+packages = ["hallway", "hallway.providers"]
+
+[tool.setuptools.package-data]
+hallway = ["static/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,64 @@
+:root{--bg:#14110f;--fg:#e9e2d8;--mut:#a89f92;--acc:#ff8a2a;--line:#3a322b;--card:#1f1a16;--bad:#ff6b5b;--ok:#7bd88f}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font:15px/1.45 system-ui,sans-serif;margin:0}
+h1{font-size:1.2rem;color:var(--acc);margin:0}
+header{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+header #spend{margin-left:auto;color:var(--mut)}
+button,select,input{font:inherit;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:6px 10px}
+button{cursor:pointer;min-height:36px}
+button:disabled{opacity:.45;cursor:not-allowed}
+button.primary{background:var(--acc);color:#1a1008;border-color:var(--acc)}
+button.active{outline:2px solid var(--acc)}
+.table-wrap{overflow-x:auto;padding:0 8px 24px}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:640px}
+th,td{border-bottom:1px solid var(--line);padding:8px;vertical-align:top;text-align:left;background:var(--bg)}
+th{color:var(--mut);font-weight:600;font-size:.85em}
+.frozen{position:sticky;left:0;z-index:2;width:150px;min-width:150px;max-width:150px;box-shadow:6px 0 6px -4px #000}
+.strip{display:flex;gap:8px;overflow-x:auto;max-width:34vw;min-width:150px;padding-bottom:6px}
+.version{margin-bottom:8px}
+.vlabel{display:inline-block;color:var(--acc);font-size:.8em;font-weight:700;margin-bottom:2px}
+.clip{margin-bottom:6px}
+.prompt{color:var(--mut);font-size:.82em;margin:4px 0 0;max-width:300px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+.clip .pair{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+textarea{width:100%;font:inherit;color:inherit;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px;resize:vertical}
+.strip>*{flex:0 0 auto}
+.strip img{height:96px;border-radius:4px;display:block}
+.strip video{height:140px;border-radius:4px;background:#000;display:block}
+.drawing{position:relative}
+.drawing img{width:128px;border-radius:4px;display:block}
+.x{position:absolute;top:2px;right:2px;min-height:28px;padding:0 8px;background:#000a}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;border:1px solid var(--line);font-size:.85em;white-space:nowrap}
+.pill.public{border-color:var(--ok);color:var(--ok)}.pill.preview{border-color:var(--acc);color:var(--acc)}
+.pill.failed{border-color:var(--bad);color:var(--bad)}.pill.running,.pill.queued{color:var(--mut)}
+.actions{text-align:right}
+.tip{color:var(--mut);font-size:.82em;margin:4px 0 0}
+.why{min-height:28px;padding:0 8px;margin-left:4px;border-radius:99px}
+.err{color:var(--bad);font-size:.85em}
+label{display:block;margin:10px 0}
+.check{display:flex;gap:8px;align-items:flex-start}.check input{margin-top:3px}
+dialog{background:var(--card);color:var(--fg);border:1px solid var(--line);border-radius:10px;max-width:min(92vw,420px)}
+dialog::backdrop{background:#000a}
+menu{display:flex;gap:8px;justify-content:flex-end;padding:0;margin:14px 0 0}
+#login{display:grid;place-items:center;min-height:100vh}
+#login form{background:var(--card);padding:24px;border-radius:10px;border:1px solid var(--line);min-width:min(92vw,320px)}
+#empty{padding:24px;color:var(--mut)}
+@media (max-width:640px){
+  .table-wrap{overflow-x:visible;padding:0 12px 24px}
+  table,tbody,tr,td{display:block;width:100%;min-width:0}
+  thead{display:none}
+  tr{border:1px solid var(--line);border-radius:10px;padding:10px;margin:12px 0;background:var(--card)}
+  td{border:0;padding:6px 0;background:transparent}
+  td::before{content:attr(data-label);display:block;color:var(--mut);font-size:.8em;margin-bottom:2px}
+  .frozen{position:static;width:auto;min-width:0;max-width:none;box-shadow:none}
+  .strip{max-width:100%;min-width:0}
+  .clip video,.strip video{max-width:100%;height:auto;max-height:260px}
+  .actions{text-align:left}
+  .actions button,.clip button,header button,header select,menu button{min-height:44px}
+  .x,.why{min-width:44px;min-height:44px}
+  .strip label{display:block;min-width:44px;padding-bottom:6px}
+  input[type=checkbox]{width:24px;height:24px}
+  .check{align-items:center;min-height:44px}
+  .strip label input{margin:6px 10px 0}
+  .pill{display:inline-flex;align-items:center;min-height:44px;padding:0 14px}
+}

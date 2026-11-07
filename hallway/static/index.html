@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Haunted Hallway console</title>
+<link rel="stylesheet" href="/static/console.css">
+</head>
+<body>
+<section id="login" hidden>
+  <form id="login-form" autocomplete="off">
+    <h1>Haunted Hallway</h1>
+    <label>Admin password <input id="password" type="password" required autocomplete="current-password"></label>
+    <button type="submit">Sign in</button>
+    <p id="login-error" role="alert"></p>
+  </form>
+</section>
+
+<main id="app" hidden>
+  <header>
+    <h1>Haunted Hallway</h1>
+    <div id="spend" aria-live="polite"></div>
+    <label>Show <select id="filter"></select></label>
+    <button id="add-drawing" type="button">Add a drawing</button>
+  </header>
+  <div id="empty" hidden>No drawings yet. Add one to start.</div>
+  <div class="table-wrap"><table id="table"><thead><tr>
+    <th class="frozen">Drawing</th><th>Characters</th><th>Clips</th><th>Status</th><th class="actions">Make</th>
+  </tr></thead><tbody id="rows"></tbody></table></div>
+</main>
+
+<dialog id="modal"><form method="dialog">
+  <h2 id="modal-title"></h2><div id="modal-body"></div>
+  <menu><button value="cancel" id="modal-cancel">Cancel</button><button value="ok" id="modal-ok" class="primary"></button></menu>
+</form></dialog>
+
+<dialog id="upload-modal"><form id="upload-form">
+  <h2>Add a drawing</h2>
+  <label>Image (JPEG or PNG, 10 MB max) <input id="upload-file" type="file" accept="image/jpeg,image/png" required></label>
+  <label class="check"><input id="upload-consent" type="checkbox" required> A parent or guardian agreed to this drawing being used.</label>
+  <p id="upload-error" role="alert"></p>
+  <menu><button type="button" id="upload-cancel">Cancel</button><button type="submit" class="primary">Upload</button></menu>
+</form></dialog>
+<script type="module" src="/static/app.js"></script>
+</body>
+</html>

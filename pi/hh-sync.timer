@@ -1,0 +1,10 @@
+[Unit]
+Description=Run the Haunted Hallway loop sync every minute
+
+[Timer]
+OnBootSec=20
+OnUnitActiveSec=60
+AccuracySec=5
+
+[Install]
+WantedBy=timers.target

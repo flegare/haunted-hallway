@@ -1,0 +1,38 @@
+[Unit]
+Description=Haunted Hallway loop player
+After=local-fs.target
+
+[Service]
+User=hallway
+Group=hallway
+SupplementaryGroups=video render
+Environment=HH_LOOP_DIR=/var/lib/haunted-hallway/loop
+# Only picture settings (ORIENTATION, MIRROR). The loop token lives in /etc/haunted-hallway.env,
+# which this service must never load: the player has no network job and no use for it.
+EnvironmentFile=-/etc/haunted-hallway-player.env
+ExecStart=/opt/haunted-hallway/pi/player.sh
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectHome=true
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/haunted-hallway/loop
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectClock=true
+ProtectHostname=true
+RestrictNamespaces=true
+RestrictRealtime=true
+RestrictSUIDSGID=true
+LockPersonality=true
+CapabilityBoundingSet=
+SystemCallArchitectures=native
+# The player needs no internet at all.
+RestrictAddressFamilies=AF_UNIX
+IPAddressDeny=any
+
+[Install]
+WantedBy=multi-user.target
